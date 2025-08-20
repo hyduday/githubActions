@@ -2,7 +2,7 @@ name: Demo Workflow   # Workflow name
 
 on: 
  pull_request:             # Trigger (runs on push)
-  types: [closed]
+  types: [synchronize]
   branches: 
    - main
 jobs:
