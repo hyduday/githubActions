@@ -1,7 +1,9 @@
 name: Demo Workflow   # Workflow name
 
-on: push              # Trigger (runs on push)
-
+on: 
+ pull_request:             # Trigger (runs on push)
+  branches: 
+   - main
 jobs:
   build:              # Job name
     runs-on: ubuntu-latest
