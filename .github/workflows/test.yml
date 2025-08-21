@@ -9,5 +9,5 @@ jobs:
         run: echo "event by ${{github.actor}} on branch ${{github.ref}}"
 
       - name: Run only on main branch
-        if: github.ref == 'refs/heads/dev'
+        if: github.ref == 'refs/heads/dev1'
         run: echo "This is main branch code"
