@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
    inputs:
     username:
-     description: "eneter your name"
+     description: "enter your name"
      required: true
-     default: "guset"
+     default: "guest"
 
 
 jobs:
