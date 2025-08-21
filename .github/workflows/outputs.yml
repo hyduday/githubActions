@@ -1,0 +1,31 @@
+name: Output Variables
+
+on:
+  workflow_dispatch:
+   inputs:
+    username:
+     description: "Enter user name"
+     required: true
+     default: "Guest"
+
+
+jobs:
+  greeting_job:
+    runs-on: ubuntu-latest   
+    
+    steps:
+      - name: "Step 1"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Udaya
+          DAY_OF_WEEK: sunday
+          Greeting: Hello
+      - name: print username
+        run: echo "${{inputs.username}}">> $GITHUB_OUTPUT
+
+  create_user:
+      runs-on: ubuntu-latest   
+
+      steps:
+        - name: test output
+          run: echo "User Names is ${{needs.greeting_job.outputs.GITHUB_OUTPUT}}"
