@@ -2,19 +2,19 @@ name: Output Variables
 
 on:
   workflow_dispatch:
-   inputs:
-    username:
-     description: "Enter user name"
-     required: true
-     default: "Guest"
-
+    inputs:
+      username:
+        description: "Enter user name"
+        required: true
+        default: "Guest"
 
 jobs:
   greeting_job:
     runs-on: ubuntu-latest   
-    
+
     outputs:
-      username_output: ${{steps.save_username.outputs.username}}
+      username_output: ${{ steps.save_username.outputs.username }} # Correctly reference output of save_username step
+
     steps:
       - name: "Step 1"
         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
@@ -22,12 +22,16 @@ jobs:
           First_Name: Udaya
           DAY_OF_WEEK: sunday
           Greeting: Hello
+
       - name: save username as output
-        run: echo "${{github.events.inputs.username}}">> $GITHUB_OUTPUT
+        id: save_username
+        run: echo "username=${{ github.event.inputs.username }}" >> $GITHUB_ENV # Save input username to env
+        # This is using $GITHUB_ENV to persist the value as an output for the job.
 
   create_user:
-      runs-on: ubuntu-latest   
-      needs: greeting_job
-      steps:
-        - name: greeting job with output
-          run: echo "User Names is ${{needs.greeting_job.outputs.username_output}}"
+    runs-on: ubuntu-latest   
+    needs: greeting_job # Ensure this job runs after greeting_job
+
+    steps:
+      - name: greeting job with output
+        run: echo "User Name is ${{ needs.greeting_job.outputs.username_output }}" # Correct output reference
