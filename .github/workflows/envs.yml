@@ -1,4 +1,4 @@
-name: ENV Example 
+name: ENV secrets Example 
 on:
   push:
   
