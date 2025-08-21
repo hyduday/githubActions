@@ -1,4 +1,4 @@
-name: Demo Workflow   # Workflow name
+name: Demo Workflow 3  # Workflow name
 
 on: [push]
 jobs:
