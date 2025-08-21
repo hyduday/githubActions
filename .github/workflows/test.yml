@@ -1,10 +1,7 @@
 name: Demo Workflow   # Workflow name
 
-on: 
- pull_request:             # Trigger (runs on push)
-  types: [synchronize]
-  branches: 
-   - main
+on: push
+
 jobs:
   build:              # Job name
     runs-on: self-hosted
