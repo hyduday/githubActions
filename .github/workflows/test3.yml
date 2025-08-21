@@ -1,0 +1,9 @@
+name: Demo Workflow   # Workflow name
+
+on: [push]
+jobs:
+  show-contexts:             # Job name
+    runs-on: ubuntu-latest
+    steps:
+      - name: show the Github Contexts
+        run: echo "event by ${{github.actor}} on branch ${{github.ref}}"
