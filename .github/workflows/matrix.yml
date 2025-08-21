@@ -4,7 +4,7 @@ on:
   
 jobs:
   Matrix-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
      matrix:
       python-version: [3.8,3.9]
